@@ -23,6 +23,8 @@ namespace IngameScript
     {
         public class TurningStation : StationBase
         {
+            private IMyMotorRotor turntableRotor { get; set; }
+
             public override void sendData()
             {
 

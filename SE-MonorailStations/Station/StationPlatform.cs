@@ -23,9 +23,12 @@ namespace IngameScript
     {
         public class StationPlatform : StationBase
         {
+            private List<IMyTextPanel> timetableScreens { get; set; }
+            private List<IMyTextPanel> mapScreens { get; set; }
+
             public override void sendData()
             {
-
+                
             }
 
             enum Status
