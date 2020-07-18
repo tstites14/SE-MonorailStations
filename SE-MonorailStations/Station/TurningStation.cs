@@ -24,6 +24,13 @@ namespace IngameScript
         public class TurningStation : StationBase
         {
             private IMyMotorRotor turntableRotor { get; set; }
+            
+            public TurningStation(string gridName)
+            {
+                name = gridName;
+
+                
+            }
 
             public override void sendData()
             {
@@ -36,7 +43,8 @@ namespace IngameScript
                 Arrival,
                 Docked,
                 Rotating,
-                Departure
+                Departure,
+                Resetting
             }
         }
     }

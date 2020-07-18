@@ -26,6 +26,11 @@ namespace IngameScript
             private List<IMyTextPanel> timetableScreens { get; set; }
             private List<IMyTextPanel> mapScreens { get; set; }
 
+            public StationPlatform(string gridName)
+            {
+                name = gridName;
+            }
+
             public override void sendData()
             {
                 

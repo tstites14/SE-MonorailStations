@@ -23,6 +23,8 @@ namespace IngameScript
     {
         public abstract class StationBase
         {
+            protected string name { get; set; }
+
             protected IMyShipConnector connector { get; set; }
             protected IMyLaserAntenna antenna { get; set; }
 
