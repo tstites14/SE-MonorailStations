@@ -23,10 +23,13 @@ namespace IngameScript
     {
         public abstract class StationBase
         {
-            protected string name { get; set; }
+            public string name { get; set; }
 
-            protected IMyShipConnector connector { get; set; }
-            protected IMyLaserAntenna antenna { get; set; }
+            public IMyShipConnector connector { get; set; }
+            public IMyLaserAntenna antenna { get; set; }
+
+            public IMyCameraBlock arrivalCamera { get; set; }
+            public IMyCameraBlock departureCamera { get; set; }
 
             public abstract void sendData();
         }
