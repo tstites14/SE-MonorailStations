@@ -23,13 +23,26 @@ namespace IngameScript
     {
         public class TurningStation : StationBase
         {
-            private IMyMotorRotor turntableRotor { get; set; }
-            
+            private IMyMotorStator turntableRotor;
+
+            private Dictionary<int, int> destinationDict;
+
             public TurningStation(string gridName)
             {
                 name = gridName;
 
-                
+                destinationDict = new Dictionary<int, int>
+                {
+                    { 1, 0 },
+                    { 2, 45 },
+                    { 3, 90 },
+                    { 4, 135 },
+                    { 5, 180 },
+                    { 6, 225 },
+                    { 7, 270 },
+                    { 8, 305 },
+                    { 9, 0 }
+                };
             }
 
             public override void sendData()
