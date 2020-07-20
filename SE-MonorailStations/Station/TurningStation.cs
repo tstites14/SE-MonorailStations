@@ -59,6 +59,23 @@ namespace IngameScript
                 Departure,
                 Resetting
             }
+
+            public bool isRotationRequired(int requestedAngle)
+            {
+                int currentAngle = Convert.ToInt32(radsToDegrees(turntableRotor.Angle));
+
+                if (currentAngle != requestedAngle)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            private double radsToDegrees(float rads)
+            {
+                return rads * (180 / Math.PI);
+            }
         }
     }
 }
