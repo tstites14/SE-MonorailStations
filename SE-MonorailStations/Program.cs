@@ -16,12 +16,12 @@ using VRage.Game.ObjectBuilders.Definitions;
 using VRage.Game;
 using VRage;
 using VRageMath;
+using System.Diagnostics;
 
 namespace IngameScript
 {
     partial class Program : MyGridProgram
     {
-
         public Program()
         {
 
@@ -34,7 +34,38 @@ namespace IngameScript
 
         public void Main(string argument, UpdateType updateSource)
         {
+            var station = getStationType();
+            
+            if (station.GetType() == typeof(StationPlatform))
+            {
+                
+            }
+            else if (station.GetType() == typeof(TurningStation))
+            {
 
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        StationBase getStationType()
+        {
+            string grid = Me.CubeGrid.CustomName;
+
+            if (grid.Contains("Station Platform"))
+            {
+                return new StationPlatform(grid);
+            }
+            else if (grid.Contains("Turning Station"))
+            {
+                return new TurningStation(grid);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
