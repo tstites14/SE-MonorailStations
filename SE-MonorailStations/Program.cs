@@ -63,7 +63,9 @@ namespace IngameScript
             }
             else if (grid.Contains("Turning Station"))
             {
-                return new TurningStation(grid, sensors);
+                IMyMotorStator rotor = GridTerminalSystem.GetBlockWithName("Turning Station Rotor") as IMyMotorStator;
+
+                return new TurningStation(grid, rotor, sensors);
             }
             else
             {

@@ -24,12 +24,12 @@ namespace IngameScript
     {
         public class TurningStation : StationBase
         {
-            private IMyMotorStator turntableRotor;
+            public IMyMotorStator turntableRotor;
+            public TurningStationStatus stationStatus;
 
             private Dictionary<int, int> destinationDict;
-            private Status stationStatus;
 
-            public TurningStation(string gridName, List<IMySensorBlock> sensors)
+            public TurningStation(string gridName, IMyMotorStator rotor, List<IMySensorBlock> sensors)
             {
                 name = gridName;
 
@@ -46,6 +46,8 @@ namespace IngameScript
                     { 9, 0 }
                 };
 
+                turntableRotor = rotor;
+
                 this.sensors = sensors;
                 this.sensors.Where(item =>
                 {
@@ -56,16 +58,6 @@ namespace IngameScript
             public override void sendData()
             {
 
-            }
-
-            enum Status
-            {
-                Empty,
-                Arrival,
-                Docked,
-                Rotating,
-                Departure,
-                Resetting
             }
 
             public bool isRotationRequired(int requestedAngle)

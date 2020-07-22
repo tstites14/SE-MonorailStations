@@ -21,29 +21,28 @@ namespace IngameScript
 {
     partial class Program
     {
-        public class StationPlatform : StationBase
+        public class TurningStationStatus
         {
-            private List<IMyTextPanel> timetableScreens { get; set; }
-            private List<IMyTextPanel> mapScreens { get; set; }
+            StationStatus stationStatus;
 
-            public StationPlatformStatus status;
-
-            public StationPlatform(string gridName, List<IMySensorBlock> sensors)
+            public Status()
             {
-                name = gridName;
-
-                status = new StationPlatformStatus();
-
-                this.sensors = sensors;
-                this.sensors.Where(item =>
-                {
-                    return item.CubeGrid.Name == gridName;
-                });
+                stationStatus = StationStatus.Empty;
             }
 
-            public override void sendData()
+            public Status(int statusInt)
             {
-                
+                stationStatus = (StationStatus) Enum.Parse(typeof(StationStatus), statusInt.ToString());
+            }
+
+            public enum StationStatus
+            {
+                Empty,
+                Arrival,
+                Docked,
+                Rotating,
+                Departure,
+                Resetting
             }
         }
     }

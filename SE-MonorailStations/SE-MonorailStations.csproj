@@ -49,6 +49,8 @@
     <AdditionalFiles Include="Instructions.readme" />
     <AdditionalFiles Include="thumb.png" />
     <AdditionalFiles Include="MDK\whitelist.cache" />
+    <Compile Include="Station\Enum\StationPlatformStatus.cs" />
+    <Compile Include="Station\Enum\TurningStationStatus.cs" />
     <Compile Include="Station\StationBase.cs" />
     <Compile Include="Station\StationPlatform.cs" />
     <Compile Include="Station\TurningStation.cs" />
