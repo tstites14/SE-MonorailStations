@@ -26,9 +26,15 @@ namespace IngameScript
             private List<IMyTextPanel> timetableScreens { get; set; }
             private List<IMyTextPanel> mapScreens { get; set; }
 
-            public StationPlatform(string gridName)
+            public StationPlatform(string gridName, List<IMySensorBlock> sensors)
             {
                 name = gridName;
+
+                this.sensors = sensors;
+                this.sensors.Where(item =>
+                {
+                    return item.CubeGrid.Name == gridName;
+                });
             }
 
             public override void sendData()

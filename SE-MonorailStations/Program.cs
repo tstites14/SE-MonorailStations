@@ -54,13 +54,16 @@ namespace IngameScript
         {
             string grid = Me.CubeGrid.CustomName;
 
+            List<IMySensorBlock> sensors = new List<IMySensorBlock>();
+            GridTerminalSystem.GetBlocksOfType(sensors);
+
             if (grid.Contains("Station Platform"))
             {
-                return new StationPlatform(grid);
+                return new StationPlatform(grid, sensors);
             }
             else if (grid.Contains("Turning Station"))
             {
-                return new TurningStation(grid);
+                return new TurningStation(grid, sensors);
             }
             else
             {

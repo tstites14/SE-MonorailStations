@@ -16,6 +16,7 @@ using VRage.Game.ObjectBuilders.Definitions;
 using VRage.Game;
 using VRage;
 using VRageMath;
+using VRageRender;
 
 namespace IngameScript
 {
@@ -26,8 +27,9 @@ namespace IngameScript
             private IMyMotorStator turntableRotor;
 
             private Dictionary<int, int> destinationDict;
+            private Status stationStatus;
 
-            public TurningStation(string gridName)
+            public TurningStation(string gridName, List<IMySensorBlock> sensors)
             {
                 name = gridName;
 
@@ -43,6 +45,12 @@ namespace IngameScript
                     { 8, 305 },
                     { 9, 0 }
                 };
+
+                this.sensors = sensors;
+                this.sensors.Where(item =>
+                {
+                    return item.CubeGrid.Name == gridName;
+                });
             }
 
             public override void sendData()
