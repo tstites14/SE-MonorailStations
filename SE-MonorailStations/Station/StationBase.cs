@@ -28,8 +28,7 @@ namespace IngameScript
             public IMyShipConnector connector { get; set; }
             public IMyLaserAntenna antenna { get; set; }
 
-            public IMySensorBlock arrivalSensor { get; set; }
-            public IMySensorBlock departureSensor { get; set; }
+            List<IMySensorBlock> sensors;
 
             public abstract void sendData();
         }
