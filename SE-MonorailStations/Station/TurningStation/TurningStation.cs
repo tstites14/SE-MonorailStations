@@ -52,7 +52,7 @@ namespace IngameScript
                 grid.GetBlocksOfType(sensors);
                 sensors.Where(item =>
                 {
-                    return item.CubeGrid.Name == gridName;
+                    return item.IsSameConstructAs(connector);
                 });
 
                 IMyBlockGroup rotatingLightGroup = grid.GetBlockGroupWithName("Rotating Light");

@@ -37,7 +37,7 @@ namespace IngameScript
                 this.sensors = sensors;
                 this.sensors.Where(item =>
                 {
-                    return item.CubeGrid.Name == gridName;
+                    return item.IsSameConstructAs(connector);
                 });
             }
 
