@@ -63,7 +63,7 @@ namespace IngameScript
             }
             else if (grid.Contains("Turning Station"))
             {
-                return new TurningStation(grid, GridTerminalSystem);
+                return new TurningStation(grid, this);
             }
             else
             {

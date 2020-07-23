@@ -24,15 +24,18 @@ namespace IngameScript
     {
         public class TurningStation : StationBase
         {
+            private Program grid;
+
             public IMyMotorStator turntableRotor;
             public TurningStationStatus stationStatus;
             public LargeRotatingLight rotatingLight;
 
             private Dictionary<int, int> destinationDict;
 
-            public TurningStation(string gridName, IMyGridTerminalSystem grid)
+            public TurningStation(string gridName, Program gridProgram)
             {
                 name = gridName;
+                grid = gridProgram;
 
                 destinationDict = new Dictionary<int, int>
                 {
@@ -46,22 +49,22 @@ namespace IngameScript
                     { 8, 305 }
                 };
 
-                turntableRotor = grid.GetBlockWithName("Turning Station Rotor") as IMyMotorStator;
+                turntableRotor = gridProgram.GridTerminalSystem.GetBlockWithName("Turning Station Rotor") as IMyMotorStator;
 
                 sensors = new List<IMySensorBlock>();
-                grid.GetBlocksOfType(sensors);
+                gridProgram.GridTerminalSystem.GetBlocksOfType(sensors);
                 sensors.Where(item =>
                 {
                     return item.IsSameConstructAs(connector);
                 });
 
-                IMyBlockGroup rotatingLightGroup = grid.GetBlockGroupWithName("Rotating Light");
+                IMyBlockGroup rotatingLightGroup = gridProgram.GridTerminalSystem.GetBlockGroupWithName("Rotating Light");
                 rotatingLight = new LargeRotatingLight(rotatingLightGroup);
             }
 
             public override void sendData()
             {
-
+                
             }
 
             public bool isRotationRequired(int requestedAngle)
