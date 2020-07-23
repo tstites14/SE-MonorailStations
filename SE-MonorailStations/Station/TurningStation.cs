@@ -78,14 +78,14 @@ namespace IngameScript
                 destinationDict.TryGetValue(endPosition, out endAngle);
 
 
-                if (endAngle > 180)
+                if (endAngle < 180)
                 {
                     turntableRotor.TargetVelocityRPM = 0.75f;
 
                     turntableRotor.UpperLimitDeg = endAngle;
                     turntableRotor.LowerLimitDeg = 0;
                 }
-                else if (endAngle < 180)
+                else if (endAngle > 180)
                 {
                     turntableRotor.TargetVelocityRPM = -0.75f;
 
