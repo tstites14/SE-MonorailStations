@@ -50,6 +50,7 @@ namespace IngameScript
                 };
 
                 turntableRotor = gridProgram.GridTerminalSystem.GetBlockWithName("Turning Station Rotor") as IMyMotorStator;
+                antenna = gridProgram.GridTerminalSystem.GetBlockWithName("Laser Antenna") as IMyLaserAntenna;
 
                 sensors = new List<IMySensorBlock>();
                 gridProgram.GridTerminalSystem.GetBlocksOfType(sensors);
