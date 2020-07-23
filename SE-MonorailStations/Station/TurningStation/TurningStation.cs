@@ -26,10 +26,11 @@ namespace IngameScript
         {
             public IMyMotorStator turntableRotor;
             public TurningStationStatus stationStatus;
+            public LargeRotatingLight rotatingLight;
 
             private Dictionary<int, int> destinationDict;
 
-            public TurningStation(string gridName, IMyMotorStator rotor, List<IMySensorBlock> sensors)
+            public TurningStation(string gridName, IMyGridTerminalSystem grid)
             {
                 name = gridName;
 
@@ -45,13 +46,17 @@ namespace IngameScript
                     { 8, 305 }
                 };
 
-                turntableRotor = rotor;
+                turntableRotor = grid.GetBlockWithName("Turning Station Rotor") as IMyMotorStator;
 
-                this.sensors = sensors;
-                this.sensors.Where(item =>
+                sensors = new List<IMySensorBlock>();
+                grid.GetBlocksOfType(sensors);
+                sensors.Where(item =>
                 {
                     return item.CubeGrid.Name == gridName;
                 });
+
+                IMyBlockGroup rotatingLightGroup = grid.GetBlockGroupWithName("Rotating Light");
+                rotatingLight = new LargeRotatingLight(rotatingLightGroup);
             }
 
             public override void sendData()

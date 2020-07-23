@@ -26,15 +26,18 @@ namespace IngameScript
             private IMyMotorStator rotor;
             private List<IMyReflectorLight> lights;
 
-            public LargeRotatingLight(IMyMotorStator rotor, List<IMyReflectorLight> lights)
+            public LargeRotatingLight(IMyBlockGroup lightGroup)
             {
-                this.rotor = rotor;
-                this.lights = lights;
+                List<IMyMotorStator> rotors = new List<IMyMotorStator>();
+                lightGroup.GetBlocksOfType(rotors);
+
+                rotor = rotors[0];
+                lightGroup.GetBlocksOfType(lights);
             }
 
             public void enable()
             {
-                rotor.TargetVelocityRPM = 2.5f;
+                rotor.TargetVelocityRPM = 10.0f;
 
                 lights.ForEach(light =>
                 {
