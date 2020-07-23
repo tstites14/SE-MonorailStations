@@ -72,6 +72,32 @@ namespace IngameScript
                 return false;
             }
 
+            public void rotatePlatform(int endPosition)
+            {
+                int endAngle;
+                destinationDict.TryGetValue(endPosition, out endAngle);
+
+
+                if (endAngle > 180)
+                {
+                    turntableRotor.TargetVelocityRPM = 0.75f;
+
+                    turntableRotor.UpperLimitDeg = 180 - endAngle;
+                    turntableRotor.LowerLimitDeg = 0;
+                }
+                else if (endAngle < 180)
+                {
+                    turntableRotor.TargetVelocityRPM = -0.75f;
+
+                    turntableRotor.UpperLimitDeg = 0;
+                    turntableRotor.LowerLimitDeg = endAngle * -1f;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
             private double radsToDegrees(float rads)
             {
                 return rads * (180 / Math.PI);
