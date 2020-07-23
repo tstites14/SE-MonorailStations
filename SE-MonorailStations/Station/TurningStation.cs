@@ -42,8 +42,7 @@ namespace IngameScript
                     { 5, 180 },
                     { 6, 225 },
                     { 7, 270 },
-                    { 8, 305 },
-                    { 9, 0 }
+                    { 8, 305 }
                 };
 
                 turntableRotor = rotor;
@@ -90,7 +89,7 @@ namespace IngameScript
                     turntableRotor.TargetVelocityRPM = -0.75f;
 
                     turntableRotor.UpperLimitDeg = 0;
-                    turntableRotor.LowerLimitDeg = (180 - endAngle) * -1f;
+                    turntableRotor.LowerLimitDeg = 180 - endAngle;
                 }
                 else
                 {
